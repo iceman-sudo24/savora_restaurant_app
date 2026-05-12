@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAsDgyMWmFG1SAWOyO4MHLzNdcL0KByye4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>739979970700</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.testClineRestaurant</string>
+	<key>PROJECT_ID</key>
+	<string>savora-restaurant-apps</string>
+	<key>STORAGE_BUCKET</key>
+	<string>savora-restaurant-apps.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:739979970700:ios:0d4c0b1c2a1786d1d853a9</string>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "739979970700",
+    "project_id": "savora-restaurant-apps",
+    "storage_bucket": "savora-restaurant-apps.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739979970700:android:a8f4fb43a089cd29d853a9",
+        "android_client_info": {
+          "package_name": "com.example.savora_restaurant_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrnLCVedkeVpnOmNxDNl2AvQiqE57-YbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
