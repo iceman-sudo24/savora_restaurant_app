@@ -8,12 +8,10 @@ import '../../providers/auth_providers.dart';
 import '../common/widgets/app_button.dart';
 import '../common/widgets/app_text_field.dart';
 import '../common/widgets/error_dialog.dart';
-import 'widgets/role_selector.dart';
 
-/// Registration screen with name, email, password, and role selection.
-///
-/// The [RoleSelector] widget lets users choose between Customer and Admin.
-/// On success, go_router redirect handles navigation to the appropriate dashboard.
+/// Registration screen — all new accounts default to "customer" role.
+/// Admin accounts are created externally via Firebase Console.
+/// On success, go_router redirect handles navigation to the dashboard.
 class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
 
@@ -33,7 +31,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final _passwordFocus = FocusNode();
   final _confirmPasswordFocus = FocusNode();
 
-  String _selectedRole = AppConstants.roleCustomer;
   bool _isLoading = false;
 
   @override
@@ -59,7 +56,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             name: _nameController.text,
             email: _emailController.text,
             password: _passwordController.text,
-            role: _selectedRole,
+            role: AppConstants.roleCustomer,
           );
 
       if (error != null && mounted) {
@@ -107,13 +104,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       ),
                 ),
                 const SizedBox(height: 32),
-
-                // Role Selector
-                RoleSelector(
-                  selectedRole: _selectedRole,
-                  onChanged: (role) => setState(() => _selectedRole = role),
-                ),
-                const SizedBox(height: 24),
 
                 // Name
                 AppTextField(

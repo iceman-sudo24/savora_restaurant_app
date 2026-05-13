@@ -8,7 +8,13 @@ import '../ui/common/screens/splash_screen.dart';
 import '../ui/auth/login_screen.dart';
 import '../ui/auth/register_screen.dart';
 import '../ui/customer/customer_shell.dart';
+import '../ui/customer/home_screen.dart';
+import '../ui/customer/package_detail_screen.dart';
+import '../ui/customer/profile_screen.dart';
 import '../ui/admin/admin_shell.dart';
+import '../ui/admin/manage_packages_screen.dart';
+import '../ui/admin/package_form_screen.dart';
+import '../ui/admin/admin_profile_screen.dart';
 
 /// Application router configuration using go_router.
 ///
@@ -121,10 +127,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: AppConstants.customerHomePath,
                 name: 'customer_home',
-                builder: (context, state) => const _PlaceholderScreen(
-                  title: 'Home',
-                  icon: Icons.home,
-                ),
+                builder: (context, state) => const HomeScreen(),
+                routes: [
+                  // Sub-route: /customer/home/package/:id
+                  GoRoute(
+                    path: 'package/:id',
+                    name: 'package_detail',
+                    builder: (context, state) {
+                      final id = state.pathParameters['id']!;
+                      return PackageDetailScreen(packageId: id);
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -145,10 +159,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: AppConstants.customerProfilePath,
                 name: 'customer_profile',
-                builder: (context, state) => const _PlaceholderScreen(
-                  title: 'Profile',
-                  icon: Icons.person,
-                ),
+                builder: (context, state) => const ProfileScreen(),
               ),
             ],
           ),
@@ -166,10 +177,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: AppConstants.adminPackagesPath,
                 name: 'admin_packages',
-                builder: (context, state) => const _PlaceholderScreen(
-                  title: 'Manage Packages',
-                  icon: Icons.restaurant_menu,
-                ),
+                builder: (context, state) => const ManagePackagesScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'add',
+                    name: 'admin_package_add',
+                    builder: (context, state) => const PackageFormScreen(),
+                  ),
+                  GoRoute(
+                    path: 'edit/:id',
+                    name: 'admin_package_edit',
+                    builder: (context, state) {
+                      final id = state.pathParameters['id']!;
+                      return PackageFormScreen(packageId: id);
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -190,10 +213,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: AppConstants.adminProfilePath,
                 name: 'admin_profile',
-                builder: (context, state) => const _PlaceholderScreen(
-                  title: 'Admin Profile',
-                  icon: Icons.admin_panel_settings,
-                ),
+                builder: (context, state) => const AdminProfileScreen(),
               ),
             ],
           ),
